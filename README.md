@@ -32,6 +32,8 @@ git clone https://github.com/carooobregon/Hateful-Memes.git
 ## Base de datos
 Está compuesta de imágenes tanto ofensivas como no ofensivas, con el propósito de entrenar el modelo y sepa distinguir entre estas. Dichas imágenes fueron obtenidas del desafío para la detección para memes de Facebook, los cuales fueron compilados con el propósito de desarrollar modelos multimodales para su respectiva clasificación.
 
+Para el procesamiento de texto se utilizó el dataset del repositorio de Thomas Davidson "Automated Hate Speech Detection and the Problem of Offensive Language", el cual divide tweets entre ofensivos (19190), de odio (1430) y ninguno (4163).
+
 ## Descripción y entrenamiento de los modelos
 Utilizamos una red convolucional para la detección de rostros, clasificación de género y clasificación de emociones. También se utiliza un clasificador de texto, sin embargo no se utiliza el método de ensamble.
 
@@ -39,6 +41,9 @@ Para realizar el proceso de extracción de textos, recurrimos a técnicas de OCR
 
 Una vez que los textos de cada imagen se extraen, son guardados en un documento tipo csv para poder procesarlos y clasificarlos en mensaje ofensivo o de odio y mensaje neutral.
 
+En cuanto al reconocimiento de emociones en imágenes se utilizó la librería PAZ (Perception for Autonomous Systems) el cual propone una arquitectura de red neuronal convolucional y back-propagation para evaluar los pesos y las características aprendidas. Esta librería está implementada utilizando Keras y OpenCV.
+
+Primero se realizó un reconocimiento de las caras y se dibujan bounding boxes en estas. Posteriormente, se realiza un corte y se hace la clasificación para reconocer emociones.
 
 ## Páginas consultadas
 [1] Kiela, D., Firooz, H., Mohan, A., Goswami, V., Singh, A., Ringshia, P., & Testuggine, D. (2020). The hateful memes challenge: Detecting hate speech in multimodal memes. arXiv preprint arXiv:2005.04790.  <br />
